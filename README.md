@@ -1,67 +1,37 @@
 # Two Provider Cost Tracker
+Two provider cost tracker is python script that accepts prompt from terminal,sends prompt to two different LLMs and gets response,input and output tokens and total cost in USD.It also shows comparison table and saves results in a separate json output file.
 
-A Python-based tool that compares Google Gemini and Groq AI models based on response time, token usage, and API cost.
+# Steps :
+First make repo on github and then clone
+   git clone "https://github.com/usman-ytr/two-provider-cost-tracker.git"
 
-## Features
+Initialize python project
+   uv init
+ 
+Generate API keys for gemini,groq providers.
+Make .gitignore file and write following content into it.
+    .env
+   .venv/
+   __pycache__/
+   *.pyc
 
-- Send the same prompt to Gemini and Groq.
-- Measure API response time.
-- Track input and output tokens using API usage data.
-- Calculate API costs based on per-million-token pricing.
-- Display a side-by-side comparison table.
-- Save results automatically in `results.json`.
-- Accept prompts through command-line arguments.
+This file will not push API keys on github.
 
-## Requirements
+Commit gitignore file on github using commands
+   git add .gitignore
+   git commit -m "Add gitignore to protect secrets"
+   git push
 
-- Python
-- uv package manager
-- Google Gemini API key
-- Groq API key
+Install python packages using
+  uv add google-genai groq python-dotenv
 
-## Installation
+Make a secret file .env to hold provider API keys,model id,input and output price.
 
-1. Clone the repository:
-
-   `git clone YOUR_GITHUB_REPOSITORY_URL`
-
-2. Navigate to the project folder.
-
-3. Install dependencies:
-
-   `uv sync`
-
-4. Create a `.env` file using `.env.example` as a template.
-
-5. Add your Gemini and Groq API keys to `.env`.
-
-## Usage
-
-Run the tracker with a prompt:
-
-`uv run tracker.py "Explain Agentic AI in simple words."`
-
-## Output
-
-The program displays:
-
-- Gemini response
-- Groq response
-- Input and output tokens
-- Response time
-- Estimated API cost in USD
-- Side-by-side comparison table
-
-Results are also saved in `results.json`.
-
-## Technologies Used
-
-- Python
-- Google Gemini API
-- Groq API
-- python-dotenv
-- uv
-
-## Security
-
-API keys are stored in `.env`. The `.env` file is excluded from Git using `.gitignore`. Never commit real API keys to GitHub.# two-provider-cost-tracker
+Create tracker.py file and write python script into it.
+Open terminal and runs below command
+  uv run tracker.py "Hi"
+Output will be response,input and output token,total cost in usd,two provider comparison table and  a json file "result.json" will be automatically created on project that will hold two provider results.
+Then commit and push to repo.type these commands.
+  git add tracker.py,README.md,results.json
+  git commit -m "last commit"
+  git push origin main
